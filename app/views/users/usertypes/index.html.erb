@@ -1,0 +1,8 @@
+<ul> 
+<% @usertypes.each do |usertype| %>
+  <li><%= usertype.name %></li>
+<% end %>
+</ul>
+<%= link_to 'Nuevo tipo de usuario', new_usertype_path %>
+
+<%= button_to "Regresar", adminpanel_users_path, :method => "get" %> 

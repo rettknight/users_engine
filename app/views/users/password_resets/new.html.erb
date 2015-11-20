@@ -1,0 +1,10 @@
+<%= form_tag(password_resets_path, :method => "post", id: "search-form") do %>
+  	 <div class = "field">
+	 	<%= label_tag "Correo Electronico" %> <br>
+  	 	<%= text_field_tag :search, params[:search], placeholder: "Correo Electronico " %>
+  	 </div>
+  	 <br>
+  	 <div class="actions">
+ 	 <%= submit_tag "Enviar instrucciones", :name => nil %>
+ 	 </div>
+<% end %>

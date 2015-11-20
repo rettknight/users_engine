@@ -1,0 +1,30 @@
+<%= form_tag(contacts_user_path(@user), :method => "get", id: "search-form") do %>
+  	 <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+ 	 <%= submit_tag "Search", :name => nil %>
+<% end %>
+<% if !params[:search].blank? %> 
+	<% @someusers = Users::User.search(params[:search]).paginate(:page => params[:page]) %> 
+		<% if !@someusers.nil? %> 
+			<%= render @someusers%>  
+			<div class="digg_pagination">
+			<%= will_paginate @someusers , :container => false %>
+			</div>
+		<% end %>
+<% end %> 
+<table summary="Contactos del Usuario"> 
+	<tr>
+		<td class="main">
+			<h1><%= "Contactos" %></h1>
+			<% if @users.any? %>
+				<ul class="users">
+					<%= render @users %> 
+				</ul>
+			<% else %>
+					No tienes ningun contacto aun.
+			<% end %> 
+		</td>
+		<td class ="sidebar round">
+			<%= render 'users/shared/stats' %>
+		</td>
+	</tr>
+</table>

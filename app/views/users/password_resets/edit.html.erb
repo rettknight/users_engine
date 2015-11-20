@@ -1,0 +1,5 @@
+<%= simple_form_for (@user), :url => password_reset_path(params[:id]) do |f| %>
+	<%= f.input :password, :input_html => {:style => 'width: 200px' } %>
+	<%= f.input :password_confirmation, :label => "Confirmar contraseña", :input_html => {:style => 'width: 200px'}  %>
+	<%= f.button :submit, :value => "Actualizar contraseña" %>
+<% end %> 

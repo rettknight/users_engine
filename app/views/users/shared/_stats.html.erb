@@ -1,0 +1,9 @@
+<div class = "stats"> 	
+	<table summary="User stats">
+		<a href="<%= contacts_user_path(@user)%>"> 	
+			<span id="following" class="stat">
+				<%= pluralize(@user.contacts.count, "contacto", "contactos")%>
+			</span>
+		</a>
+	</table>
+</div>

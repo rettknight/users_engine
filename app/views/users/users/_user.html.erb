@@ -1,0 +1,20 @@
+<li>
+	<%= link_to user.name, user %> 
+	<% if current_user.admin? %>
+	|
+	<%= link_to "edit", edit_user_path(user) %> 
+	|
+	<%= link_to "delete", user, :method => :delete %>
+	<% end %> 
+   <% if current_user != user %> 
+		<% if current_user.contact?(user) %> 
+		|
+		<%= link_to "Quitar de Contactos", relationship_path(current_user.contact?(user)), method: :delete %>
+		<% else %>
+		|
+		<%= link_to "Agregar Contacto", relationships_path(user), method: :post %>
+		<% end %>
+	<% else %> 
+	    (tú)
+	<% end %>  
+</li>

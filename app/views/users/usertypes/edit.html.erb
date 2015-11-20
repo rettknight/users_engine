@@ -1,0 +1,6 @@
+<h1>Editing Usertype</h1>
+<%= simple_form_for(@usertype) do |f| %>
+<%= render 'shared/form', {:f => f, :object => f.object} %>
+<% end %>
+<%= link_to 'Show', @usertype %> |
+<%= link_to 'Back', usertypes_path %>
