@@ -1,3 +1,12 @@
 = Users
 
-This project rocks and uses MIT-LICENSE.
+On gemfile: 
+
+gem 'users', path: 'engines/users' 
+
+Place engine on a folder 'engines' inside the project. 
+Run bundle install 
+
+On config/routes.rb: 
+
+mount Users::Engine => "/users"
