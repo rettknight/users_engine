@@ -4,11 +4,11 @@
       <h1><%= @user.name %> <%= @user.lastname %> </h1>
     </td> 
     <td class ="sidebar round">
-      <strong>Name</strong> <%=@user.name %> <%=@user.lastname %> <br />
+      <strong>Nombre:</strong> <%=@user.name %> <%=@user.lastname %> <br />
     </td> 
     <% if current_user.admin? %>
      <td class ="sidebar round">
-     	<strong>UserType: </strong><%= Users::Usertype.find(@user.userType_id).name %>
+     	<strong>Tipo de Usuario: </strong><%= Users::Usertype.find(@user.userType_id).name %>
      </td>
      <% end %>
   </tr>
