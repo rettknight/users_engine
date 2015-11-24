@@ -7,20 +7,21 @@
     <tr>
       <th>Usuario</th>
       <th>Estado</th>
+      <th>Tipo de Usuario</th>
     </tr>
   </thead>
-
   <tbody>
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to "#{user.name} #{user.lastname}", user %></td>
         <td><%= user.active == 1 ? 'Cuenta activada' : 'Cuenta desactivada' %> </td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= Users::Usertype.find(user.userType_id).name %></td>
+        <td><%= link_to 'Editar', edit_user_path(user) %></td>
         <td></td>
-        <td><% if current_user.admin? %> <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></td>
+        <td><% if current_user.admin? %> <%= link_to 'Destruir', user, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></td>
       </tr>
     <% end %>
-  </tbody>
+  </tbody>  
 </table>
 
 <br>

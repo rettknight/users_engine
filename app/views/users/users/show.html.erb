@@ -12,6 +12,17 @@
      </td>
      <% end %>
   </tr>
+  <% if current_user == @user %>
   <tr><td>Contactos: <br>
-    <%= render 'users/shared/stats' %> </td></tr>
+    <%= render 'users/shared/stats' %> 
+    </td></tr>
+  <% else %> 
+    <% if current_user.contact?(@user) %> 
+    |
+    <%= link_to "Quitar de Contactos", relationship_path(current_user.contact?(@user)), method: :delete %>
+    <% else %>
+    |
+    <%= link_to "Agregar Contacto", relationships_path(@user), method: :post %>
+    <% end %>
+  <% end %>
 </table>
