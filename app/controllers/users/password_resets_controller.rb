@@ -25,7 +25,7 @@ module Users
       if @user.time_requested < 2.hours.ago
         redirect_to new_password_reset_path, :alert => 'Ha expirado el lapso de tiempo.'
       elsif @user.update_attributes(user_params)
-        redirect_to root_url, :notice => 'Contraseña cambiada'
+        redirect_to root_url, :notice => 'Cambio realizado'
       else
         render 'edit'
       end

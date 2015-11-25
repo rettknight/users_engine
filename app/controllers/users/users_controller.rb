@@ -38,6 +38,7 @@ module Users
      if @user.save
        flash[:notice] = 'Usuario registrado correctamente.'
        redirect_to @user
+       Notifications.welcome(@user).deliver_now
      else
        render 'new'
      end
