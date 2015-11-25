@@ -7,7 +7,7 @@ module Users
   before_action :set_user, only: [:show, :edit, :update, :destroy, :disable]
   before_filter :admin_user, only: [:destroy, :adminpanel]
   def index
-    @users = User.paginate(:page => params[:page])
+    @users = User.paginate(:page => params[:page], per_page: 15)
     @title = 'Todos los usuarios'
   end
   #If Admin Panel Uncomment =>
