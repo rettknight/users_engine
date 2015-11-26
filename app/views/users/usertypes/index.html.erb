@@ -1,6 +1,6 @@
 <ul> 
 <% @usertypes.each do |usertype| %>
-  <li><%= usertype.name %></li>
+  <li><%= usertype.name %><% if current_user.admin? && usertype.id != 2 %>|<%= link_to 'Destruir', usertype, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></li>
 <% end %>
 </ul>
 <%= link_to 'Nuevo tipo de usuario', new_usertype_path %>

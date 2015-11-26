@@ -1,0 +1,13 @@
+<%= link_to 'Tipos de Usuario', usertypes_path %> 
+<br>
+<br>
+Nuevo Usuario
+<%= simple_form_for(@newuser) do |f| %>
+<%= f.input :name,label: "Nombre", :input_html => {:style => 'width: 200px' } %>
+<%= f.input :lastname, label: "Apellido", :input_html => {:style => 'width: 200px' } %>
+<%= f.input :email, :input_html => {:style => 'width: 200px'} %>
+<%= f.input :password, label: "Contrasena", input_html: {style: 'width: 200px'} %>
+<%= f.input :userType_id, label: "Tipo de Usuario", collection: Users::Usertype.all.map{|m|[m.name, m.id]} %>
+  <%= f.submit "Crear" %>
+<% end %>
+<%= link_to 'Regresar', users_path %>

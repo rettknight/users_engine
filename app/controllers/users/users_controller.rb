@@ -10,13 +10,11 @@ module Users
     @users = User.paginate(:page => params[:page], per_page: 15)
     @title = 'Todos los usuarios'
   end
-  #If Admin Panel Uncomment =>
-  #  def adminpanel
-  #   last_connected
-    #  @title = 'Admin Panel'
-    # @newuser = User.new
-   # end
-  # Se modifica adminpanel.html.erb, esta en blanco, se debe de agregar las acciones que quieran darse a los administradores.
+  def adminpanel
+   last_connected
+    @title = 'Admin Panel'
+    @newuser = User.new
+  end
   def show
     last_connected
     @title = @user.name
@@ -32,26 +30,25 @@ module Users
     @title = 'Sign up'
   end
   def create
-   # Regular user-registration =>
-   # Can-use Hybrid-Registration with a switch giving user.nil? or user.admin?
-    @user = User.new(user_params)
-     if @user.save
-       flash[:notice] = 'Usuario registrado correctamente.'
-       redirect_to @user
-       Notifications.welcome(@user).deliver_now
-     else
+    if current_user.nil? 
+      @user = User.new(user_params)
+      if @user.save
+        flash[:notice] = 'Usuario registrado correctamente.'
+        sign_in @user
+        redirect_to @user
+        Notifications.welcome(@user).deliver_now
+      else
        render 'new'
-     end
-     # Registration only-by admin =>
-     #  if current_user.admin?
-     #    @newuser = User.new(user_params)
-     #    if @newuser.save 
-     #      flash[:notice] = "User created. "
-     #      redirect_to adminpanel_users_path
-     #    else
-     #      render "adminpanel"
-     #    end
-     # end
+      end
+    elsif current_user.admin? 
+      @newuser = User.new(user_params)
+       if @newuser.save 
+         flash[:notice] = 'User registrado correctamente. '
+         redirect_to adminpanel_users_path
+       else
+         render "adminpanel"
+       end
+    end
   end 
   def edit
     @title = 'Edit user'

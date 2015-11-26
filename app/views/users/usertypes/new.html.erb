@@ -1,6 +1,6 @@
 <h1>Nuevo Tipo de Usuario</h1>
 <%= simple_form_for(@usertype) do |f| %>
-<%= render 'shared/form', {:f => f, :object => f.object} %>
+<%= render 'users/shared/form', {:f => f, :object => f.object} %>
 <% end %>
 
 <%= link_to 'Back', usertypes_path %>
