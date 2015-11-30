@@ -3,3 +3,9 @@
 <%= f.input :email, :input_html => {:style => 'width: 200px'} %>
 <%= f.input :password, label: "Contrasena", input_html: {style: 'width: 200px'} %>
 <%= f.input :password_confirmation, label: "Confirmacion de contrasena ", input_html: {style: 'width: 200px'} %>
+<% if current_user.present? %>
+	<% if current_user.admin? %> 
+<%= f.input :active, label: "Estado de cuenta", input_html: {style: 'width: 200px'}, collection: [['Inactiva', '0' ], ['Activa','1']] %>
+<%= f.input :userType_id, label: "Tipo de Usuario", collection: Users::Usertype.all.map{|m|[m.name, m.id]} %>
+	<% end %>
+<% end %>
