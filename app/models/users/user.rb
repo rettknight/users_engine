@@ -48,6 +48,7 @@ module Users
               :confirmation => true,
               :length => {:within => 6..30},
               :on => :create
+    validates :active, :presence => true
     before_save :encrypt_password, :set_timestamps, :set_userType
     ##
     #Genera token y lo asigna cambiando el tiempo,
