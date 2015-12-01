@@ -36,4 +36,5 @@
 <br>
 <% if current_user.admin? %> 
   <br>  <%= link_to 'Panel de Administracion', adminpanel_users_path %>
+  <br> <%= link_to  'Nuevo Usuario', new_user_path %>
 <% end %> 
