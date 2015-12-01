@@ -31,7 +31,7 @@ module Users
   end
   def new
     @user = User.new
-    @title = 'Sign up'
+    @title = 'Iniciar sesión'
   end
   def create
     if current_user.nil? 
@@ -55,7 +55,7 @@ module Users
     end
   end 
   def edit
-    @title = 'Edit user'
+    @title = 'Editar usuario'
   end
   def update
     case params[:commit]
@@ -82,13 +82,12 @@ module Users
           @user.save(validate: false)
           sign_out
           redirect_to root_path
-       # if admin can delete
-       # elsif current_user.admin?
-        #  @user.active = '0'
-         # @user.deletedAt = Time.now
-          #@user.updatedAt = Time.now
-          #@user.save(validate: false)
-          #redirect_to adminpanel_users_path, :flash => {:success => 'Cuenta desactivada. '}
+        elsif current_user.admin?
+          @user.active = '0'
+          @user.deletedAt = Time.now
+          @user.updatedAt = Time.now
+          @user.save(validate: false)
+          redirect_to adminpanel_users_path, :flash => {:success => 'Cuenta desactivada. '}
         end
     end
   end
@@ -115,7 +114,7 @@ module Users
     end
     def admin_user
       redirect_to(root_path) unless current_user.admin? 
-      flash[:notice] = 'You have no permission to access this page. ' if !current_user.admin?
+      flash[:notice] = 'No tienes permiso de accesar esta pagina. ' if !current_user.admin?
     end
     def user_params
       params.require(:user).permit(:active, :lastConnection, :updatedAt, :name, :email, :password, :password_confirmation, :lastname, :userType_id)

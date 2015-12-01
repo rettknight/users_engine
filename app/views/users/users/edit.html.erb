@@ -1,11 +1,7 @@
 <h1>Editar usuario</h1>
 <%= simple_form_for(@user) do |f| %>
 	<%= render 'users/shared/error_messages', :object => f.object %>
-	<% #if current_user.admin? %> 
-	<% # render 'shared/adminfields', :f => f %> 
-	<% #else %> 
-	<%= render 'fields', :f => f %>
-	<% #end %>  
+	<%= render 'fields', :f => f %> 
 	<div class ="actions">
 		<%= f.submit "Actualizar", class: "btn btn-primary" %>
 		<%= button_tag "Desactivar Cuenta", class: "btn btn-primary" %> 
