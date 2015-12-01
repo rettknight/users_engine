@@ -10,3 +10,16 @@ Run bundle install
 On config/routes.rb: 
 
 mount Users::Engine => "/users"
+
+
+Contactos con
+
+<% contacts = Users::User.find(params[:id]).contacts %> 
+<% if contacts.any? %> 
+<% contacts.each do |contact| %> 
+<%= "#{contact.name} #{contact.lastname}" %> 
+<% end %>
+<% else %> 
+Ningun contacto
+<% end %>
+
