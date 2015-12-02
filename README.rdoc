@@ -18,20 +18,22 @@ mount Users::Engine => "/users"
 
 = Contacts
 
-<% contacts = Users::User.find(params[:id]).contacts %> 
-<% if contacts.any? %> 
-<% contacts.each do |contact| %> 
-<%= "#{contact.name} #{contact.lastname}" %> 
-<% end %>
-<% else %> 
-Ningun contacto
-<% end %>
+Example 
+  <% contacts = Users::User.find(params[:id]).contacts %> 
+  <% if contacts.any? %> 
+  <% contacts.each do |contact| %> 
+  <%= "#{contact.name} #{contact.lastname}" %> 
+  <% end %>
+  <% else %> 
+  Ningun contacto
+  <% end %>
 
 = Logout Path
 
-<% if current_user.present? %>
-Signed in as <%= link_to "#{current_user.name}", users.user_path(current_user) %>, <%= link_to 'Logout?', users.signout_path %>
-<% end %>
+Example
+  <% if current_user.present? %>
+  Signed in as <%= link_to "#{current_user.name}", users.user_path(current_user) %>, <%= link_to 'Logout?', users.signout_path %>
+  <% end %>
 
 = Migrations 
 
