@@ -17,8 +17,6 @@ mount Users::Engine => "/users"
 
 
 = Contacts
-
-Example 
   <% contacts = Users::User.find(params[:id]).contacts %> 
   <% if contacts.any? %> 
   <% contacts.each do |contact| %> 
@@ -29,16 +27,13 @@ Example
   <% end %>
 
 = Logout Path
-
-Example
   <% if current_user.present? %>
   Signed in as <%= link_to "#{current_user.name}", users.user_path(current_user) %>, <%= link_to 'Logout?', users.signout_path %>
   <% end %>
 
 = Migrations 
-
-rake users:install:migrations
-rake db:migrate
+  rake users:install:migrations
+  rake db:migrate
 
 = SMTP Configuration
 
