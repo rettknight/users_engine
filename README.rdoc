@@ -57,7 +57,7 @@ Example SMTP Settings
 = Mails 
 
 Inside the engine
-  mailer/users/notifications.rb 
+  app/mailer/users/notifications.rb 
 
 Method welcome to modify variables
 
