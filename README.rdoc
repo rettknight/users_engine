@@ -5,8 +5,9 @@
   gem 'simple_form'
   gem 'will_paginate'
 
-Place engine on a folder 'engines' inside the project. <br>
-Run bundle install 
+Place engine on a folder 'engines' inside the project.
+
+Run bundle install.
 
 = Routes
 
