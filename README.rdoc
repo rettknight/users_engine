@@ -1,19 +1,17 @@
 = Users
 
 = Gemfile
+  gem 'users', path: 'engines/users' 
+  gem 'simple_form'
+  gem 'will_paginate'
 
-gem 'users', path: 'engines/users' 
-gem 'simple_form'
-gem 'will_paginate'
-
-Place engine on a folder 'engines' inside the project. 
+Place engine on a folder 'engines' inside the project. <br>
 Run bundle install 
 
 = Routes
 
 config/routes.rb: 
-
-mount Users::Engine => "/users"
+  mount Users::Engine => "/users"
 
 
 = Contacts
@@ -38,9 +36,9 @@ mount Users::Engine => "/users"
 = SMTP Configuration
 
 Files to modify depending the environment
-config/environments/development.rb 
-config/environments/production.rb 
-config/environments/test.rb 
+  config/environments/development.rb 
+  config/environments/production.rb 
+  config/environments/test.rb 
 
 Example SMTP Settings
   config.action_mailer.raise_delivery_errors = true
@@ -58,7 +56,7 @@ Example SMTP Settings
 = Mails 
 
 Inside the engine
-mailer/users/notifications.rb 
+  mailer/users/notifications.rb 
 
 Method welcome to modify variables
 
