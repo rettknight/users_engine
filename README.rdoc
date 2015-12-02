@@ -1,18 +1,22 @@
 = Users
 
-On gemfile: 
+= Gemfile
 
 gem 'users', path: 'engines/users' 
+gem 'simple_form'
+gem 'will_paginate'
 
 Place engine on a folder 'engines' inside the project. 
 Run bundle install 
 
-On config/routes.rb: 
+= Routes
+
+config/routes.rb: 
 
 mount Users::Engine => "/users"
 
 
-Contactos con
+= Contacts
 
 <% contacts = Users::User.find(params[:id]).contacts %> 
 <% if contacts.any? %> 
@@ -23,8 +27,42 @@ Contactos con
 Ningun contacto
 <% end %>
 
-Boton para salir de sesion
+= Logout Path
 
 <% if current_user.present? %>
 Signed in as <%= link_to "#{current_user.name}", users.user_path(current_user) %>, <%= link_to 'Logout?', users.signout_path %>
 <% end %>
+
+= Migrations 
+
+rake users:install:migrations
+rake db:migrate
+
+= SMTP Configuration
+
+Files to modify depending the environment
+config/environments/development.rb 
+config/environments/production.rb 
+config/environments/test.rb 
+
+Example SMTP Settings
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp 
+  config.action_mailer.smtp_settings = {
+   address: "domain.com",
+   port: 587, 
+   domain: "domain.com",
+   authentication: :login,
+   enable_starttls_auto: false, 
+   user_name: "asdfg@asdfg.com", 
+   password: "asdfgh"
+  }
+
+= Mails 
+
+Inside the engine
+mailer/users/notifications.rb 
+
+Method welcome to modify variables
+
+View inside views/users/notifications 
