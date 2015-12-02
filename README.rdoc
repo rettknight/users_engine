@@ -23,3 +23,8 @@ Contactos con
 Ningun contacto
 <% end %>
 
+Boton para salir de sesion
+
+<% if current_user.present? %>
+Signed in as <%= link_to "#{current_user.name}", users.user_path(current_user) %>, <%= link_to 'Logout?', users.signout_path %>
+<% end %>

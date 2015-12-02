@@ -3,9 +3,6 @@
     <td class = "main">
       <h1><%= @user.name %> <%= @user.lastname %> </h1>
     </td> 
-    <td class ="sidebar round">
-      <strong>Nombre:</strong> <%=@user.name %> <%=@user.lastname %> <br />
-    </td> 
     <% if current_user.admin? %>
      <td class ="sidebar round">
      	<strong>Tipo de Usuario: </strong><%= Users::Usertype.find(@user.userType_id).name %>

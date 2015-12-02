@@ -7,7 +7,7 @@
     <div class="field">
       <%= check_box_tag :remember_me, 1, params[:remember_me] %>
       <%= label_tag :remember_me, 'Recordar sesion?' %>
-    </div>
+    </div>  
     <%= f.button :submit, value: 'Iniciar', class: 'btn btn-primary' %>
     <div class="field">
         <%= link_to 'Nuevo Usuario?', new_user_path %>
