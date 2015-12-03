@@ -14,6 +14,13 @@ Run bundle install.
 config/routes.rb: 
   mount Users::Engine => "/users"
 
+= Password Resets
+Modifications to be made in 
+  app/mailers/users/user_support.rb
+To modify the URL modify the @url variable. 
+
+View to be modified inside 
+  app/views/users/user_support
 
 = Contacts
   <% contacts = Users::User.find(params[:id]).contacts %> 
