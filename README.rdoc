@@ -62,3 +62,12 @@ Inside the engine
 Method welcome to modify variables
 
 View inside views/users/notifications 
+
+= Steps to Mount
+  Add gems to Gemfile
+  Add mount to routes 
+  Run both rake's in Migrations 
+  Extra:
+  Configure SMTP 
+  Add views to the application (contacts, etc) 
+  
