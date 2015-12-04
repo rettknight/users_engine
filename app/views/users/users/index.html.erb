@@ -3,12 +3,13 @@
 <h1>Listado de Usuarios</h1>
 
 <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-     <%= select_tag(:search, options_for_select(Users::Usertype.all.map{|c|[c.name, c.id]})) %>
+     <%= select_tag(:search, options_for_select(Users::Usertype.all.map{|c|[c.name, c.id]}), include_blank: "Todos") %>
    <%= submit_tag "Ver por tipo de usuario", :name => nil %>
 <% end %>
-<% if params[:search] %> 
+<% if !params[:search].blank? %> 
   <% @users = Users::User.where("userType_id = #{params[:search]}") %>
 <% end %> 
+Cantidad de Usuarios en esta lista:<%= @users.count %>
 
 <table>
   <thead>
