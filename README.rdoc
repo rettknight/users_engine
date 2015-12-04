@@ -20,9 +20,11 @@ Modifications to be made in
 To modify the URL modify the @url variable. 
 
 View to be modified inside 
-  app/views/users/user_support
+  app/vie   ws/users/user_support
 
 = Contacts
+
+To find a user's contacts and render them on a view: 
   <% contacts = Users::User.find(params[:id]).contacts %> 
   <% if contacts.any? %> 
   <% contacts.each do |contact| %> 
@@ -64,11 +66,15 @@ Example SMTP Settings
 = Mails 
 
 Inside the engine
-  app/mailer/users/notifications.rb 
+  app/mailers/users/notifications.rb 
 
 Method welcome to modify variables
 
 View inside views/users/notifications 
+
+To modify the displaying e-mail modify
+  app/mailers/application_mailer.rb
+Modify the default: from line to modify the email displayed in the e-mails.  
 
 = Steps to Mount
   Add gems to Gemfile
