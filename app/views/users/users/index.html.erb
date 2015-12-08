@@ -1,8 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listado de Usuarios</h1>
-
-<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+<div class="container">
+  <div class="row" id="admhead">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-2">FOTO!!!</div>
+      <div class="col-xs-6"><h2><%= "#{current_user.name} #{current_user.lastname}" %></h2> <br> 
+        <%= current_user.email %>
+      </div>
+      <div class="col-xs-3"><%= link_to "Cerrar sesion", signout_path %></div>
+  </div>
+  <div class="row" id="usersbuttons">
+      <div class="col-xs-2"></div>
+      <div class="col-xs-2"><%= link_to 'Inicio', "#"%></div>
+      <div class="col-xs-2"><%= link_to 'Administrar Tipo de Usuario', "#"%></div>
+      <div class="col-xs-2"><%= link_to 'Administrar Usuarios', "#"%></div>
+      <div class="col-xs-4"></div>
+  </div> 
+  <div class="row" id="usersindex">
+    <div class="col-xs-7" style=""><%= form_tag(users_path, :method => "get", id: "search-form") do %>
      <%= select_tag(:search, options_for_select(Users::Usertype.all.map{|c|[c.name, c.id]}), include_blank: "Todos") %>
    <%= submit_tag "Ver por tipo de usuario", :name => nil %>
 <% end %>
@@ -34,8 +47,18 @@ Cantidad de Usuarios en esta lista:<%= @users.count %>
     <% end %>
   </tbody>  
 </table>
-<br>
-<% if current_user.admin? %> 
-  <br>  <%= link_to 'Panel de Administracion', adminpanel_users_path %>
-  <br> <%= link_to  'Nuevo Usuario', new_user_path %>
-<% end %> 
+  <div class="digg_pagination">
+    <%= will_paginate @users , :container => false %>
+  </div>
+</div>
+    <div class="col-xs-2"></div>
+    <div class="col-xs-3">
+      Contactos
+    <table> 
+      <% current_user.contacts.each do |contact| %>
+        <td><%= "#{contact.name} #{contact.lastname}" %></td>
+      <% end %>
+    </table>
+    </div>
+  </div>
+</div>

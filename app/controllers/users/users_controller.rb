@@ -30,6 +30,10 @@ module Users
     render 'show_contacts'
   end
   def new
+    if Usertype.all.count == 0 
+      Usertype.create(name: "Member")
+      Usertype.create(name: "Admin")
+    end
     @user = User.new
     @title = 'Iniciar sesión'
   end
@@ -41,6 +45,10 @@ module Users
         sign_in @user
         redirect_to @user
         Notifications.welcome(@user).deliver_now
+        if User.first == @user 
+          @user.userType_id = 2 
+          @user.save
+        end
       else
        render 'new'
       end
