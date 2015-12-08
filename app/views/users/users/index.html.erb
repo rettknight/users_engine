@@ -20,7 +20,7 @@
    <%= submit_tag "Ver por tipo de usuario", :name => nil %>
 <% end %>
 <% if !params[:search].blank? %> 
-  <% @users = Users::User.where("userType_id = #{params[:search]}") %>
+  <% @users = Users::User.where("userType_id = #{params[:search]}").paginate(:page => params[:page], per_page: 15) %>
 <% end %> 
 Cantidad de Usuarios en esta lista:<%= @users.count %>
 
@@ -53,10 +53,10 @@ Cantidad de Usuarios en esta lista:<%= @users.count %>
 </div>
     <div class="col-xs-2"></div>
     <div class="col-xs-3">
-      Contactos
     <table> 
+      <tr><th>Contactos </th></tr>
       <% current_user.contacts.each do |contact| %>
-        <td><%= "#{contact.name} #{contact.lastname}" %></td>
+        <tr><td><%= "#{contact.name} #{contact.lastname}" %></td></tr>
       <% end %>
     </table>
     </div>
