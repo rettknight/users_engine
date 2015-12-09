@@ -1,3 +1,4 @@
+<% if current_user.admin? %> 
 <div class="container">
   <div class="row" id="admhead">
       <div class="col-xs-1"></div>
@@ -21,3 +22,10 @@
 
   </div>
 </div>
+<% else %> 
+	<h1>Nuevo Usuario</h1>
+
+	<%= render 'form' %>
+
+	<%= link_to 'Atras', users_path %>
+<% end %>
