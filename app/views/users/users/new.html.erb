@@ -1,5 +1,23 @@
-<h1>Nuevo Usuario</h1>
+<div class="container">
+  <div class="row" id="admhead">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-2">FOTO!!!</div>
+      <div class="col-xs-6"><h2><%= "#{current_user.name} #{current_user.lastname}" %></h2> <br> 
+        <%= current_user.email %>
+      </div>
+      <div class="col-xs-3"><%= link_to "Cerrar sesion", signout_path %></div>
+  </div>
+  <div class="row" id="usersbuttons">
+      <div class="col-xs-2"></div>
+      <div class="col-xs-2"><%= link_to 'Inicio', users_path %></div>
+      <div class="col-xs-2"><%= link_to 'Administrar Tipo de Usuario', usertypes_path %></div>
+      <div class="col-xs-2"><%= link_to 'Agregar Usuario Nuevo', new_user_path %></div>
+      <div class="col-xs-4"></div>
+  </div> 
+  <div class="row" id="usersindex">
+    <h3>Usuario Nuevo</h3>
 
-<%= render 'form' %>
+    <%= render 'form' %>
 
-<%= link_to 'Atras', users_path %>
+  </div>
+</div>

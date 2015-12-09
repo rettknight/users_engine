@@ -30,7 +30,7 @@ module Users
     render 'show_contacts'
   end
   def new
-    if Usertype.all.count == 0 
+    if Userty3pe.all.count == 0 
       Usertype.create(name: "Member")
       Usertype.create(name: "Admin")
     end
