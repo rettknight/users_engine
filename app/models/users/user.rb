@@ -37,6 +37,7 @@ module Users
              :foreign_key => 'owner_id'
     has_many :contacts, :through => :relationships,
              :source => :owner
+    has_one :picture
 
     email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :name, :presence => true,

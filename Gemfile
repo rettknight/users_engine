@@ -17,3 +17,5 @@ gem 'mysql2'
 gem 'simple_form'
 gem 'will_paginate'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'mini_magick'
+gem 'paperclip'

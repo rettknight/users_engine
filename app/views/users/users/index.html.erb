@@ -17,7 +17,7 @@
   <div class="row" id="usersindex">
     <div class="col-xs-7" style=""><%= form_tag(users_path, :method => "get", id: "search-form") do %>
      <%= select_tag(:search, options_for_select(Users::Usertype.all.map{|c|[c.name, c.id]}), include_blank: "Todos") %>
-   <%= submit_tag "Ver por tipo de usuario", :name => nil %>
+   <%= submit_tag "Ver por tipo de usuario", :name => nil, :class => 'btn btn-primary' %>
 <% end %>
 <% if !params[:search].blank? %> 
   <% @users = Users::User.where("userType_id = #{params[:search]}").paginate(:page => params[:page], per_page: 15) %>
