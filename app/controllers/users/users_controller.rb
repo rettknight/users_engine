@@ -22,7 +22,7 @@ module Users
   def show
     last_connected
     @title = @user.name
-  end
+  end 
   def contacts
     @title = 'Contactos'
     @user = User.find(params[:id])
@@ -125,7 +125,7 @@ module Users
       flash[:notice] = 'No tienes permiso de accesar esta pagina. ' if !current_user.admin?
     end
     def user_params
-      params.require(:user).permit(:active, :lastConnection, :updatedAt, :name, :email, :password, :password_confirmation, :lastname, :userType_id)
+      params.require(:user).permit(:active, :lastConnection, :updatedAt, :name, :email, :password, :password_confirmation, :lastname, :userType_id, :avatar, :avatar_file_name, :avatar_content_type, :avatar_file_size, :avatar_updated_at)
     end
   end
 end

@@ -84,3 +84,6 @@ Modify the default: from line to modify the email displayed in the e-mails.
   Configure SMTP 
   Add views to the application (contacts, etc) 
   
+
+
+Note/add how-toi nclude scripts

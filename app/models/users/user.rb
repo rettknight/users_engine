@@ -37,8 +37,7 @@ module Users
              :foreign_key => 'owner_id'
     has_many :contacts, :through => :relationships,
              :source => :owner
-    has_one :picture
-
+ 
     email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :name, :presence => true,
               :length   => {:maximum => 50}
@@ -52,6 +51,14 @@ module Users
     validates :active, :presence => true
     validates :userType_id, :presence => true
     before_save :encrypt_password, :set_timestamps, :set_userType
+    ##
+    #Información de avatar aquí
+    has_attached_file :avatar
+
+    validates_attachment :avatar, 
+      presence: true, 
+      :size => { less_than: 5.megabytes },
+      :content_type => { :content_type => %w(image/png image/jpeg image/jpg) }
     ##
     #Genera token y lo asigna cambiando el tiempo,
     #de esta manera se controla que el token no sirva después

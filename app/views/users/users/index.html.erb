@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row" id="admhead">
       <div class="col-xs-1"></div>
-      <div class="col-xs-2">FOTO!!!</div>
+      <% if current_user.nil? %>
+      <div class="col-xs-2">
+
+       </div>
+      <% else %> 
+      <div class="col-xs-2"></div>
+      <% end %>
       <div class="col-xs-6"><h2><%= "#{current_user.name} #{current_user.lastname}" %></h2> <br> 
         <%= current_user.email %>
       </div>
